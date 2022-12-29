@@ -1,5 +1,4 @@
 #include "ftpclient.h"
-#include "ftpclient.h"
 
 
 
@@ -240,7 +239,7 @@ bool FTPClient::UploadFile(const std::string& LocalFilePathName, const std::stri
 #endif
 		if (!iFile)
 		{
-			return false;
+			return result;
 		}
 		result = UploadFile(ReadStreamCallback, static_cast<void*>(&iFile), RemoteFilePathName, file_info.st_size, Creatdir);
 	}
@@ -259,7 +258,7 @@ bool FTPClient::DeleteFiles(const std::string& RemoteFile)
 	bool result = false;
 	if (!m_Session) 
 	{
-		return false;
+		return result;
 	}
 	curl_easy_reset(m_Session);
 
